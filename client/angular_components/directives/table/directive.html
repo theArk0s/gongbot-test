@@ -1,0 +1,18 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Recieved</th>
+      <th>Group</th>
+      <th>ID</th>
+      <th>Temperature</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="message in messages">
+      <th>{{ message.date | date: 'medium' }}</th>
+      <th>{{ message.stuff }}</th>
+      <th>{{ message.thing }}</th>
+      <th>{{ message.message.temperature }}&deg;F</th>
+    </tr>
+  </tbody>
+</table>

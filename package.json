@@ -1,0 +1,15 @@
+{
+  "name": "thingfabric-heroku-app",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "underscore": "1.6.0",
+    "q": "1.0.1",
+    "node-uuid": "1.4.1",
+    "MD5": "1.2.1",
+    "mqtt": "0.3.8",
+    "async": "0.7.0",
+    "express": "3.3.x",
+    "ws": "0.4.x"
+  }
+}
