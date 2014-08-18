@@ -1,15 +1,8 @@
-if (!process.env.THINGFABRIC_USERNAME) {
-  throw new Error('`THINGFABRIC_USERNAME` missing!');
+if (!process.env.THINGFABRIC_CONFIG) {
+  throw new Error('`THINGFABRIC_CONFIG` missing!');
 }
-if (!process.env.THINGFABRIC_PASSWORD) {
-  throw new Error('`THINGFABRIC_PASSWORD` missing!');
-}
-if (!process.env.THINGFABRIC_M2M_ENDPOINT) {
-  throw new Error('`THINGFABRIC_M2M_ENDPOINT` missing!');
-}
-if (!process.env.THINGFABRIC_M2M_DATA_CHANNEL) {
-  throw new Error('`THINGFABRIC_M2M_DATA_CHANNEL` missing!');
-}
+
+var config = process.env.THINGFABRIC_CONFIG;
 
 var path = require('path'),
   http = require('http'),
@@ -47,10 +40,10 @@ server.listen(port, function() {
   console.log('NODE_ENV: ' + process.env.NODE_ENV);
   console.log('Heroku Demo started on port %s', port);
   mqtt({
-    THINGFABRIC_USERNAME: process.env.THINGFABRIC_USERNAME,
-    THINGFABRIC_PASSWORD: process.env.THINGFABRIC_PASSWORD,
-    THINGFABRIC_M2M_ENDPOINT: process.env.THINGFABRIC_M2M_ENDPOINT,
-    THINGFABRIC_M2M_DATA_CHANNEL: process.env.THINGFABRIC_M2M_DATA_CHANNEL
+    THINGFABRIC_USERNAME: config.THINGFABRIC_USERNAME,
+    THINGFABRIC_PASSWORD: config.THINGFABRIC_PASSWORD,
+    THINGFABRIC_M2M_ENDPOINT: config.THINGFABRIC_M2M_ENDPOINT,
+    THINGFABRIC_M2M_DATA_CHANNEL: config.THINGFABRIC_M2M_DATA_CHANNEL
   }, messageProxy).then(function() {
     wss = new WebSocketServer({
       server: server
