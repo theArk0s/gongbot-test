@@ -19,7 +19,6 @@ This Node.js / AngularJS application demonstrates how to use ThingFabric and the
     bower install
     heroku create 
     heroku addons:add thingfabric --app <YOUR_APP_NAME_HERE>
-    heroku labs:enable websockets
     heroku plugins:install git://github.com/ddollar/heroku-config.git
     heroku config:pull
 
