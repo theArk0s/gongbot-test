@@ -2,15 +2,17 @@ if (!process.env.THINGFABRIC_CONFIG) {
   throw new Error('`THINGFABRIC_CONFIG` missing!');
 }
 
-var config = process.env.THINGFABRIC_CONFIG;
+var config = JSON.parse(process.env.THINGFABRIC_CONFIG.split('=>').join(':'));
+console.log(config);
 
 var path = require('path'),
   http = require('http'),
   _ = require('underscore'),
   express = require('express'),
   mqtt = require('./mqtt'),
-  WebSocketServer = require('ws').Server,
-  app = express(), 
+  WebSocketServer = require('ws').Server;
+  
+var app = express(), 
   port = process.env.PORT || 3000, 
   wss, 
   connections = {};
@@ -38,13 +40,14 @@ var messageProxy = function(message) {
 
 server.listen(port, function() {
   console.log('NODE_ENV: ' + process.env.NODE_ENV);
-  console.log('Heroku Demo started on port %s', port);
+  console.log('ThingFabric Heroku app started on port %s', port);
   mqtt({
     THINGFABRIC_USERNAME: config.THINGFABRIC_USERNAME,
     THINGFABRIC_PASSWORD: config.THINGFABRIC_PASSWORD,
     THINGFABRIC_M2M_ENDPOINT: config.THINGFABRIC_M2M_ENDPOINT,
     THINGFABRIC_M2M_DATA_CHANNEL: config.THINGFABRIC_M2M_DATA_CHANNEL
   }, messageProxy).then(function() {
+    console.log('Attempting to start WebSocket server...');
     wss = new WebSocketServer({
       server: server
     });

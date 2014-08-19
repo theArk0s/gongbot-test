@@ -40,9 +40,9 @@ module.exports = function(connOpts, messageProxy) {
     keepalive: 30,
     clientId: connOpts.THINGFABRIC_USERNAME + '/' + uuid.v4()
   };
-  console.log('Connecting Mqtt client:');
+  console.log('Connecting Mqtt client to %s:%s:', connOpts.THINGFABRIC_M2M_ENDPOINT.split(':')[0], 1883);
   console.log(JSON.stringify(opts, null, 2));
-  var client = mqtt.createClient(1883, connOpts.THINGFABRIC_M2M_ENDPOINT, opts);
+  var client = mqtt.createClient(1883, connOpts.THINGFABRIC_M2M_ENDPOINT.split(':')[0], opts);
   client.on('connect', function() {
     console.log('Mqtt ' + opts.clientId + ' connected and subscribing to %s', connOpts.THINGFABRIC_M2M_DATA_CHANNEL);
     client.subscribe(connOpts.THINGFABRIC_M2M_DATA_CHANNEL, {
