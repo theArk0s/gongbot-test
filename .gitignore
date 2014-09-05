@@ -1,1 +1,7 @@
 .env
+*.pyc
+.idea
+.idea*
+.idea/*
+.idea/*.xml
+.idea/*.iml
