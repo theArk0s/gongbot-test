@@ -10,6 +10,7 @@ from flask_sockets import Sockets
 import threading
 import json
 import uuid
+import md5
 
 REDIS_CHAN = 'mqtt'
 
@@ -65,10 +66,10 @@ def mqtt(url, port, client_id):
     mqttc.on_publish = on_publish
     mqttc.user_data_set(client_id)
 
-    #if username:
-    #    mqttc._username = username
-    #if password:
-    #    mqttc._password = password
+    if 'THINGFABRIC_USERNAME' in os.environ:
+        mqttc._username = os.environ['THINGFABRIC_USERNAME']
+    if 'THINGFABRIC_PASSWORD' in os.environ:
+        mqttc._password = md5.md5(os.environ['THINGFABRIC_PASSWORD'])
 
     mqttc.connect(url, int(port), keepalive=30)
     MQTTCLIENTS[client_id] = mqttc
