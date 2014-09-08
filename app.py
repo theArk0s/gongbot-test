@@ -1,12 +1,5 @@
 # -*- coding: utf-8 -*-
 
-"""
-Chat Server
-===========
-
-This simple application uses WebSockets to run a primitive chat server.
-"""
-
 import os
 import logging
 import redis
@@ -14,9 +7,9 @@ import gevent
 import mosquitto
 from flask import Flask, render_template
 from flask_sockets import Sockets
-#from mqtt import mqtt
 import threading
 import json
+import uuid
 
 REDIS_CHAN = 'mqtt'
 
@@ -35,7 +28,7 @@ clients = list()
 def on_connect(mosq, obj, rc):
     app.logger.debug("mosquito connect: "+str(rc))
     if rc==0:
-        MQTTCLIENTS[obj].subscribe('public/thingfabric/#', 0)
+        MQTTCLIENTS[obj].subscribe(os.environ['THINGFABRIC_M2M_DATA_CHANNEL'], 1)
 
 def on_disconnect(mosq, obj, rc):
     app.logger.debug("mosquito disconnect: "+str(rc))
@@ -63,41 +56,30 @@ def on_publish(mosq, obj, mid):
 def on_log(mosq, obj, level, string):
     app.logger.debug("Log:"+string)
 
-def mqtt(url):
+def mqtt(url, port, client_id):
     app.logger.debug("start mqtt")
-    mqttc = mosquitto.Mosquitto('qwerr')
+    mqttc = mosquitto.Mosquitto(client_id)
     mqttc.on_message = on_message
     mqttc.on_connect = on_connect
     mqttc.on_disconnect = on_disconnect
     mqttc.on_publish = on_publish
-    mqttc.user_data_set('qwerr')
-
-    #print("username: "+username+"   password: "+password);
-
-    #if username:
-    #     if password:
-    #         logging.info("Setting Username: "+username+"; Password="+password)
-    #         mqttc.username_pw_set(username, password)
-    #     else:
-    #         logging.info("Setting Username (Only): "+username)
-    #         mqttc.username_pw_set(username)
+    mqttc.user_data_set(client_id)
 
     #if username:
     #    mqttc._username = username
     #if password:
     #    mqttc._password = password
 
-    mqttc.connect(url, int('1883'), keepalive=30)
-    MQTTCLIENTS['qwerr'] = mqttc
+    mqttc.connect(url, int(port), keepalive=30)
+    MQTTCLIENTS[client_id] = mqttc
 
     rc = 0
     while rc == 0:
-        #print "loop"
         try:
             rc = mqttc.loop()
         except Exception:
             app.logger.debug("mqtt error")
-            mqttc.connect(url, int('1883'), keepalive=30)
+            mqttc.connect(url, int(port), keepalive=30)
 
 
 def parse(message):
@@ -114,7 +96,7 @@ def parse(message):
 
 
 
-download_thread = threading.Thread(target=mqtt, args=["q.mq.tt"])
+download_thread = threading.Thread(target=mqtt, args=[os.environ['THINGFABRIC_M2M_ENDPOINT'].split(':')[0], 1883, uuid.uuid4()])
 download_thread.start()
 
 

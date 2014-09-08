@@ -18,6 +18,7 @@ This Python / js application demonstrates how to use ThingFabric and the ThingFa
     sudo pip install -r requirements.txt
     heroku create
     heroku addons:add thingfabric --app <YOUR_APP_NAME_HERE>
+    git push heroku Python:master
     heroku plugins:install git://github.com/ddollar/heroku-config.git
     heroku config:pull
 
