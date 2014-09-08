@@ -80,7 +80,7 @@ def mqtt(url, port, client_id):
             rc = mqttc.loop()
         except Exception:
             app.logger.debug("mqtt error")
-            mqttc.connect(url, int(port), keepalive=30)
+            mqtt(url, port, client_id)
 
 
 def parse(message):
