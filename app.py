@@ -96,7 +96,7 @@ def parse(message):
 
 
 
-download_thread = threading.Thread(target=mqtt, args=[os.environ['THINGFABRIC_M2M_ENDPOINT'].split(':')[0], 1883, uuid.uuid4()])
+download_thread = threading.Thread(target=mqtt, args=[os.environ['THINGFABRIC_M2M_ENDPOINT'].split(':')[0], 1883, str(uuid.uuid4())])
 download_thread.start()
 
 
