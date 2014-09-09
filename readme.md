@@ -4,10 +4,9 @@ This Python / js application demonstrates how to use ThingFabric and the ThingFa
 
 ## Pre-reqs
 
-### Node.js + NPM
-
 1. [Python](https://www.python.org/)
 1. [Foreman](https://github.com/ddollar/foreman)
+1. [Redis-server] (http://redis.io/topics/quickstart) for locally
 
 
 ## Setup
@@ -26,8 +25,6 @@ Optionally set the application port (Foreman defaults to `5000`):
     export PORT=3000
 
 Run the application locally:
-
-    Need to install redis-server (http://redis.io/topics/quickstart)
 
     redis-server
     foreman start
