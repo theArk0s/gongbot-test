@@ -14,11 +14,10 @@ This Python / js application demonstrates how to use ThingFabric and the ThingFa
 
     git clone https://github.com/m2mIO/thingfabric-heroku-app.git
     cd thingfabric-heroku-app
-    git checkout python
+    git checkout Python
     sudo pip install -r requirements.txt
     heroku create
     heroku addons:add thingfabric --app <YOUR_APP_NAME_HERE>
-    git push heroku Python:master
     heroku plugins:install git://github.com/ddollar/heroku-config.git
     heroku config:pull
 
@@ -37,7 +36,7 @@ Visit the `localhost` URL with `PORT` you specified!
 
 Pushing the application to Heroku:
 
-    git push heroku master
+    git push heroku Python:master
     heroku open
 
 Login to ThingFabric _by means of the Heroku add-on link_, then start the default Device Simulator in ThingFabric to see data come through!
