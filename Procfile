@@ -1,1 +1,1 @@
-web: node server/app.js
+web: target/universal/stage/bin/thingfabric-play -Dhttp.port=$PORT
