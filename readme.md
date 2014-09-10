@@ -20,7 +20,7 @@ This Node.js / AngularJS application demonstrates how to use ThingFabric and the
     heroku create 
     heroku addons:add thingfabric --app <YOUR_APP_NAME_HERE>
     heroku plugins:install git://github.com/ddollar/heroku-config.git
-    heroku config:pull
+    heroku config:pull --app <YOUR_APP_NAME_HERE>
 
 Optionally set the application port (Foreman defaults to `5000`):
 
