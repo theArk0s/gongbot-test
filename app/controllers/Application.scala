@@ -9,6 +9,7 @@ import play.api.libs.iteratee.Iteratee
 import play.api.libs.iteratee.Concurrent
 import play.api.Logger._
 import play.api.libs.concurrent.Execution.Implicits._
+import scala.util.Properties
 
 object Application extends Controller {
   
@@ -16,22 +17,20 @@ object Application extends Controller {
     Ok(views.html.index("Your new application is ready."))
   }
 
-  def mqtt(ip: String, port: Int, clientid: String, un: Option[String], pw: Option[String],
-           clean: String, ttl: Int, lwtTopic:Option[String], lwtQos:Int, lwtPayload:Option[String]) = WebSocket.using[String] { request =>
+  def mqtt() = WebSocket.using[String] { request =>
   //println("In websocket action.")
-    val md5pass =ScalaMD5Sum.computeSum(pw.getOrElse(""))//"a029d0df84eb5549c641e04a9ef389e5"
-    println(md5pass)
+    val md5pass =ScalaMD5Sum.computeSum(Properties.envOrElse("THINGFABRIC_PASSWORD", "" ))//"a029d0df84eb5549c641e04a9ef389e5"
 
     val (out,channel) = Concurrent.broadcast[String]
 
-    val mqtt = new PahoClientModel(ip, port, clientid, un, md5pass, clean.toBoolean, ttl, channel)
+    val mqtt = new PahoClientModel(Properties.envOrElse("THINGFABRIC_M2M_ENDPOINT", "q.m2m.io" ), 1883, java.util.UUID.randomUUID.toString.substring(0,22), Properties.envOrElse("THINGFABRIC_USERNAME", ""), md5pass, true, 30, channel)
 
     val in = Iteratee.foreach[String](x => {
       //logger.info("Websocket msg: " + x)
       try {
         val Array(cmd, topic, qos, message) = x.split("<--")
         cmd match {
-          case "SUBSCRIBE" => mqtt.subscribe(topic, qos.toInt)
+          case "SUBSCRIBE" => mqtt.subscribe(Properties.envOrElse("THINGFABRIC_M2M_DATA_CHANNEL", "public/thingfabric/#" ), qos.toInt)
           case "UNSUBSCRIBE" => mqtt.unsubscribe(topic)
           case "PUBLISH" => mqtt.publish(topic, message, qos.toInt)
           case "CHECK" => if(mqtt.client.isConnected()) channel.push("-->CONNECTED")

@@ -84,16 +84,6 @@ class MqttThingFabric.Page
     me = this;
     console.log "Initing web socket"
     if !@websocket
-      ip = "q.m2m.io"
-      port = 1883
-      cid = "awewef"
-      un = '' #"apps@mqtt.io"
-      pw = '' #"a029d0df84eb5549c641e04a9ef389e5"
-      clean = yes
-      ttl = 30
-      lwtTopic = ""
-      lwtQos = 0
-      lwtPayload = ""
 
       serverurl = window.location.href;
       serverurl = serverurl.replace("http://", "");
@@ -103,7 +93,7 @@ class MqttThingFabric.Page
 
       console.log "Server Name" + serverName
 
-      url = "ws://" + serverName + "/mqtt/" + ip + "/" + port + "/" + cid + "?un=" + un + "&pw=" + pw + "&clean=" + clean + "&ttl=" + ttl + "&lwtTopic=" + lwtTopic + "&lwtPayload=" + lwtPayload + "&lwtQos=" + lwtQos
+      url = "ws://" + serverName + "/mqtt"
 
       console.log "WS Request URL: " + url
 

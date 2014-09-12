@@ -11,7 +11,7 @@ import play.api.libs.iteratee.Concurrent
 import play.api.libs.json.JsValue
 import scala.collection.mutable.ArrayBuffer
 
-class PahoClientModel(ip: String, port: Int, clientid: String, username: Option[String], md5pass: String,
+class PahoClientModel(ip: String, port: Int, clientid: String, username: String, md5pass: String,
   clean: Boolean, keepAlive: Int, channel: Concurrent.Channel[String]) extends MqttCallback {
 
  
@@ -23,14 +23,12 @@ class PahoClientModel(ip: String, port: Int, clientid: String, username: Option[
   conOpt.setCleanSession(clean)
   conOpt.setKeepAliveInterval(keepAlive)
 
-  username match {
-    case Some(un) if !un.isEmpty() => {
-      conOpt.setUserName(un)
+  if (username!="") {
+      logger.info(username)
+      conOpt.setUserName(username)
       conOpt.setPassword(md5pass.toCharArray)
     }
-    case Some(un) =>
-    case None =>
-  }
+
 
   @BeanProperty
   var client = new MqttClient(url, clientid)
