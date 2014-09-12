@@ -1,1 +1,1 @@
-web: node server/app.js
+web: target/universal/stage/bin/thingfabric-heroku-app  -Dhttp.port=$PORT
