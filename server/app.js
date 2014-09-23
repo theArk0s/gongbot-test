@@ -2,7 +2,7 @@ if (!process.env.THINGFABRIC_CONFIG) {
   throw new Error('`THINGFABRIC_CONFIG` missing!');
 }
 
-var config = JSON.parse(process.env.THINGFABRIC_CONFIG.split('=>').join(':'));
+var config = JSON.parse('{'.concat(process.env.THINGFABRIC_CONFIG.split('=')[1]).concat('}'));
 console.log(config);
 
 var path = require('path'),
