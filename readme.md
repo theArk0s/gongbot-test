@@ -4,6 +4,10 @@ This Node.js / AngularJS application demonstrates how to use ThingFabric and the
 
 ## Pre-reqs
 
+### Heroku
+
+You will need a Heroku account in order to use this sample application and add-on. Your Heroku account also needs a valid billing method on file (though the basic Heroku app and this add-on are free to use).
+
 ### Node.js + NPM
 
 1. [Node.js](http://nodejs.org) (version 0.10.18)
