@@ -51,7 +51,7 @@ angular.module('com.2lemetry.heroku-demo.directives.map', []).directive('herokuD
         $scope.$watch('currentMessage', function(currentMessage) {
           if (currentMessage && currentMessage.location) {
             // GPX Simulator / Geofence Rule format.
-            if (currentMessage.location.split) {
+            if (currentMessage.location.split(',').length > 0) {
               updateMap({
                 lat: currentMessage.location.split(',')[0],
                 lng: currentMessage.location.split(',')[1]

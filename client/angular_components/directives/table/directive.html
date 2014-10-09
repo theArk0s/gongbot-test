@@ -14,7 +14,7 @@
       <th>{{ message.stuff }}</th>
       <th>{{ message.thing }}</th>
       <th>{{ message.message.temperature }}&deg;F</th>
-      <th>{{ message.message.location.latitude }}, {{ message.message.location.longitude}}</th>
+      <th>{{ message.message.location.latitude || message.message.location.split(',')[0] }}, {{ message.message.location.longitude || message.message.location.split(',')[1] }}</th>
     </tr>
   </tbody>
 </table>
