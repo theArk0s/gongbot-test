@@ -12,7 +12,7 @@ angular.module('com.2lemetry.heroku-demo', [
         $scope.currentMessage = message.message;
         $scope.messages.unshift(message);
         if ($scope.messages.length > 10) {
-          $scope.messages = _.first(10, $scope.messages);
+          $scope.messages = _.first($scope.messages, 10);
         }
       });
     });
