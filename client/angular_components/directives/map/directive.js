@@ -49,11 +49,19 @@ angular.module('com.2lemetry.heroku-demo.directives.map', []).directive('herokuD
         };
         createMap();
         $scope.$watch('currentMessage', function(currentMessage) {
-          if (currentMessage && currentMessage.location && currentMessage.location.latitude && currentMessage.location.longitude) {
-            updateMap({
-              lat: currentMessage.location.latitude,
-              lng: currentMessage.location.longitude
-            });
+          if (currentMessage && currentMessage.location) {
+            // GPX Simulator / Geofence Rule format.
+            if (currentMessage.location.split) {
+              updateMap({
+                lat: currentMessage.location.split(',')[0],
+                lng: currentMessage.location.split(',')[1]
+              });
+            } else {
+              updateMap({
+                lat: currentMessage.location.latitude,
+                lng: currentMessage.location.longitude
+              });
+            }
           }
         }, true);
       }
