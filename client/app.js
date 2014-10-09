@@ -1,15 +1,18 @@
 angular.module('com.2lemetry.heroku-demo', [
   'com.2lemetry.heroku-demo.services.websocket',
   'com.2lemetry.heroku-demo.directives.table',
-  'com.2lemetry.heroku-demo.directives.chart'
-]).controller('HerokuDemoController', ['$scope', 'HerokuDemoWebSocketService',
+  'com.2lemetry.heroku-demo.directives.map'
+]).controller('HerokuDemoController', [
+  '$scope', 
+  'HerokuDemoWebSocketService',
   function($scope, HerokuDemoWebSocketService) {
     $scope.messages = [];
     $scope.$on('HerokuDemoWebSocketService:message', function(event, message) {
       $scope.$apply(function() {
+        $scope.currentMessage = message.message;
         $scope.messages.unshift(message);
-        if ($scope.messages.length > 50) {
-          $scope.messages = _.first(50, $scope.messages);
+        if ($scope.messages.length > 10) {
+          $scope.messages = _.first(10, $scope.messages);
         }
       });
     });

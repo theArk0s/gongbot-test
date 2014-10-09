@@ -5,14 +5,16 @@
       <th>Device Group/Rule Topic</th>
       <th>Device ID/Rule Threshold</th>
       <th>Temperature</th>
+      <th>Location</th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="message in messages">
+    <tr ng-repeat="message in messages" ng-class="{ warning: message.stuff==='$SYS' }">
       <th>{{ message.date | date: 'medium' }}</th>
       <th>{{ message.stuff }}</th>
       <th>{{ message.thing }}</th>
       <th>{{ message.message.temperature }}&deg;F</th>
+      <th>{{ message.message.location.latitude }}, {{ message.message.location.longitude}}</th>
     </tr>
   </tbody>
 </table>

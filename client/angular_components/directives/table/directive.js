@@ -3,8 +3,7 @@ angular.module('com.2lemetry.heroku-demo.directives.table', []).directive('herok
     return {
       restrict: 'A',
       scope: true,
-      templateUrl: 'client/angular_components/directives/table/directive.html',
-      link: function($scope, element, attrs) {}
+      templateUrl: 'client/angular_components/directives/table/directive.html'
     };
   }
 ]);

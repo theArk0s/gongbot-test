@@ -1,4 +1,5 @@
-angular.module('com.2lemetry.heroku-demo.services.websocket', []).factory('HerokuDemoWebSocketService', [ '$window',
+angular.module('com.2lemetry.heroku-demo.services.websocket', []).factory('HerokuDemoWebSocketService', [ 
+  '$window',
   function($window) {
     var scope;
     return {

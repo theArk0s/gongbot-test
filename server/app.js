@@ -47,7 +47,7 @@ server.listen(port, function() {
     THINGFABRIC_M2M_ENDPOINT: config.THINGFABRIC_M2M_ENDPOINT,
     THINGFABRIC_M2M_DATA_CHANNEL: config.THINGFABRIC_M2M_DATA_CHANNEL
   }, messageProxy).then(function() {
-    console.log('Attempting to start WebSocket server...');
+    console.log('Starting WebSocket server...');
     wss = new WebSocketServer({
       server: server
     });
