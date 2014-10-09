@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="message in messages" ng-class="{ warning: message.stuff==='$SYS' }">
+    <tr ng-repeat="message in messages" ng-class="{ warning: message.stuff==='$SYS' || message.stuff.indexOf('rule')>-1 }">
       <th>{{ message.date | date: 'medium' }}</th>
       <th>{{ message.stuff }}</th>
       <th>{{ message.thing }}</th>
