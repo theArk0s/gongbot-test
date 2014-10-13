@@ -5,7 +5,7 @@ if (!process.env.THINGFABRIC_CONFIG) {
 var config;
 // config comes back different whether we are local or on heroku actual
 try {
-  config = JSON.parse(process.env.THINGFABRIC_CONFIG);
+  config =  JSON.parse('{'.concat(process.env.THINGFABRIC_CONFIG).concat('}'));
 } catch (error) {
   config =  JSON.parse('{"'.concat(process.env.THINGFABRIC_CONFIG).concat('"}'));
 }
