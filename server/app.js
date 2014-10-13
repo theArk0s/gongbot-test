@@ -2,7 +2,13 @@ if (!process.env.THINGFABRIC_CONFIG) {
   throw new Error('`THINGFABRIC_CONFIG` missing!');
 }
 
-var config = JSON.parse('{"'.concat(process.env.THINGFABRIC_CONFIG).concat('"}'));
+var config;
+// config comes back different whether we are local or on heroku actual
+try {
+  config = JSON.parse(process.env.THINGFABRIC_CONFIG);
+} catch (error) {
+  config =  JSON.parse('{"'.concat(process.env.THINGFABRIC_CONFIG).concat('"}'));
+}
 console.log(config);
 
 var path = require('path'),
