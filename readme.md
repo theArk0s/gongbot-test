@@ -17,6 +17,14 @@ You will need a Heroku account in order to use this sample application and add-o
 
 ## Setup
 
+### Deploy From Here
+
+You can click the button below, which will take you to Heroku and do all the hard work for you! After deploying, you will be taken to the application's address.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+### Or, do it manually...
+
     git clone https://github.com/m2mIO/thingfabric-heroku-app.git
     cd thingfabric-heroku-app
     npm install
