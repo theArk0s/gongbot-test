@@ -10,8 +10,5 @@
     "2lemetry",
     "connected enterprise"
   ],
-  "success_url":"/",
-  "addons":[
-    "thingfabric"
-  ]
+  "success_url":"/"
 }

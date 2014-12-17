@@ -1,12 +1,16 @@
 # thingfabric-heroku-app
 
-This Node.js / AngularJS application demonstrates how to use ThingFabric and the ThingFabric Heroku add-on to build applications _on top of_ ThingFabric. 
+This Node.js / AngularJS application demonstrates how to use ThingFabric to build applications _on top of_ ThingFabric. 
 
 ## Pre-reqs
 
 ### Heroku
 
-You will need a Heroku account in order to use this sample application and add-on. Your Heroku account also needs a valid billing method on file (though the basic Heroku app and this add-on are free to use).
+You will need a Heroku account in order to use this sample application.
+
+### ThingFabric
+
+This branch of the thingfabric-heroku-app is meant to be deployed from the ThingFabric Portal. Sign up first here: [ThingFabric Portal](https://app.thingfabric.com)
 
 ### Node.js + NPM
 
@@ -16,14 +20,6 @@ You will need a Heroku account in order to use this sample application and add-o
 1. [Foreman](https://github.com/strongloop/node-foreman) as `sudo npm install -g foreman@0.3.0`
 
 ## Setup
-
-### Deploy From Here
-
-You can click the button below, which will take you to Heroku and do all the hard work for you! After deploying, you will be taken to the application's address.
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-### Or, do it manually...
 
     git clone https://github.com/m2mIO/thingfabric-heroku-app.git
     cd thingfabric-heroku-app
