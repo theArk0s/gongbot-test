@@ -10,5 +10,8 @@
     "2lemetry",
     "connected enterprise"
   ],
-  "success_url":"/"
+  "success_url":"/",
+  "env":{
+    "THINGFABRIC_CONFIG":""
+  }
 }
