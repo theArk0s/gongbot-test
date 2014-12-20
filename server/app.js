@@ -51,8 +51,7 @@ server.listen(port, function() {
     THINGFABRIC_USERNAME: config.THINGFABRIC_USERNAME,
     THINGFABRIC_PASSWORD: config.THINGFABRIC_PASSWORD,
     THINGFABRIC_M2M_ENDPOINT: config.THINGFABRIC_M2M_ENDPOINT,
-    THINGFABRIC_M2M_DATA_CHANNEL: config.THINGFABRIC_M2M_DATA_CHANNEL,
-    THINGFABRIC_CLIENT_ID: config.THINGFABRIC_CLIENT_ID
+    THINGFABRIC_M2M_DATA_CHANNEL: config.THINGFABRIC_M2M_DATA_CHANNEL
   }, messageProxy).then(function() {
     console.log('Starting WebSocket server...');
     wss = new WebSocketServer({
