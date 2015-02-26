@@ -42,7 +42,10 @@ app.post('/sms2mqtt', function(request, response) {
   xml = '<?xml version="1.0" encoding="UTF-8"?><Response></Response>';
 
   var status = sms2mqtt(request.body.Body);
-
+  console.log('-----------------BEGIN REQUEST BODY-------------------');
+  console.log(request.body.Body);
+  console.log('-----------------END REQUEST BODY-------------------');
+  
   console.log('-----------------BEGIN STATUS-------------------');
   console.log(status);
   console.log('-----------------END STATUS-------------------');
