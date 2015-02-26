@@ -41,7 +41,7 @@ var status = sms2mqtt(req);
 
 function sms2mqtt(sms) {
   var encodedTopic, opts, request, url;
-//  request = require('request');
+  request = require('request');
   url = 'http://api.thingfabric.com/2';
  
   encodedTopic = encodeURIComponent('gvgxnrkdrpj9co1/RingGong');
