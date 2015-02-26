@@ -27,6 +27,47 @@ app.use(express.logger());
 app.use('/client', express.static(path.resolve(__dirname, '../client/')));
 app.use('/', express.static(path.resolve(__dirname, '../client/')));
 
+// MQTT TEST
+
+app.post("/sms2mqtt", function(req, res) {
+  var xml;
+  // return a blank response to Twilio
+  xml = '<?xml version="1.0" encoding="UTF-8"?><Response></Response>';
+  var status = sms2mqtt(req.body.Body);
+  res.status(status).type("text/xml").send(xml);
+});
+
+
+function sms2mqtt(sms) {
+  var encodedTopic, opts, request, url;
+ 
+  request = require('request');
+ 
+  url = 'http://api.thingfabric.com/2';
+ 
+  encodedTopic = encodeURIComponent('gvgxnrkdrpj9co1/RingGong');
+ 
+  opts = {
+    uri: "" + url + "/account/domain/gvgxnrkdrpj9c1o/stuff/things/thing/GongButton/publish?topic=" + encodedTopic,
+    method: "POST",
+    json: {
+      payload: "" + sms
+    },
+    auth: {
+      user: "c3daf8f3-8683-44f0-b8b0-5a7b47d89fe8",
+      pass: "7b867993-f81e-4b9a-ace9-934a1800e5c2",
+      sendImmediately: true
+    }
+  };
+ 
+  return request.post(opts, function(error, response, body) {
+    return response.statusCode;
+  });
+};
+
+// END MQTT TEST
+
+
 var server = http.createServer(app);
 server.listen(port);
 
