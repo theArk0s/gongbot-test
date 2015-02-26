@@ -64,7 +64,7 @@ function sms2mqtt(sms) {
  
   opts = {
 //    uri: "" + url + "/account/domain/gvgxnrkdrpj9c1o/stuff/things/thing/GongButton/publish?topic=" + encodedTopic,
-    uri: "c3daf8f3-8683-44f0-b8b0-5a7b47d89fe8:7b867993-f81e-4b9a-ace9-934a1800e5c2@https://q.thingfabric.com/3/publish?topic=gvgxnrkdrpj9c1o/RingGong&clientid=c3daf8f3-8683-44f0-b8b0-5a7b47d89fe8&qos=0"
+    uri: "https://c3daf8f3-8683-44f0-b8b0-5a7b47d89fe8:7b867993-f81e-4b9a-ace9-934a1800e5c2@q.thingfabric.com/3/publish?topic=gvgxnrkdrpj9c1o/RingGong&clientid=c3daf8f3-8683-44f0-b8b0-5a7b47d89fe8&qos=0"
     method: "POST",
     json: {
       payload: "" + sms
