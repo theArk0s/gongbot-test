@@ -34,9 +34,10 @@ app.post('/sms2mqtt', function(request, response) {
   var xml;
   // return a blank response to Twilio
   xml = '<?xml version="1.0" encoding="UTF-8"?><Response></Response>';
-//var status = sms2mqtt(req);
-  var status = sms2mqtt(request.body.Body);
-  response.status(status).type("text/xml").send(xml);
+var status = sms2mqtt(request);
+//  var status = sms2mqtt(request.body.Body);
+//  response.status(status).type("text/xml").send(xml);
+response.send(xml);
 });
 
 function sms2mqtt(sms) {
