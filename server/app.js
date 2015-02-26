@@ -86,7 +86,7 @@ function sms2mqtt(sms) {
   };
  
   return request.post(opts, function(error, response, body) {
-console.log(request.post(opts, fucntion(error, response, body);
+console.log(request.post(opts, fucntion(error, response, body)));
     return response.statusCode;
   });
 };
