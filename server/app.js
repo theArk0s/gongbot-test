@@ -20,23 +20,48 @@ var path = require('path'),
   request = require('request');
   
 var app = express(), 
-  port = process.env.PORT || 3000, 
+//  port = process.env.PORT || 3000, 
+  port = parseInt(process.env.PORT, 10) || 3000, 
   wss, 
   connections = {};
 
-app.use(express.logger());
-app.use('/client', express.static(path.resolve(__dirname, '../client/')));
-app.use('/', express.static(path.resolve(__dirname, '../client/')));
 
 // MQTT TEST
 
+app.configure(function(){
+
+// GOOD
+ app.use(express.logger());
+ app.use('/client', express.static(path.resolve(__dirname, '../client/')));
+ app.use('/client', express.static(path.resolve(__dirname, '../client/')));
+
+ app.use(express.bodyParser());
+ app.use(app.router);
+});
+
+app.listen(port);
+
 app.post('/sms2mqtt', function(request, response) {
+
+  console.log(request.body);
+
   var xml;
+
   // return a blank response to Twilio
   xml = '<?xml version="1.0" encoding="UTF-8"?><Response></Response>';
-var status = sms2mqtt(request);
+  var status = sms2mqtt(request);
+
+  console.log(status);
+
 //  var status = sms2mqtt(request.body.Body);
 //  response.status(status).type("text/xml").send(xml);
+
+// this will probably break everything
+response.status(status);
+response.type("text/xml");
+console.log(response);
+
+// this should be fine
 response.send(xml);
 });
 
