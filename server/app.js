@@ -43,7 +43,7 @@ app.configure(function(){
 
 app.post('/sms2mqtt', function(request, response) {
 
-  console.log(request.body);
+//  console.log(request.body);
 
   var xml;
 
@@ -59,7 +59,7 @@ app.post('/sms2mqtt', function(request, response) {
 // this will probably break everything
 //response.status(status);
 //response.type("text/xml");
-console.log(response);
+//console.log(response);
 
 // this should be fine
 response.send(xml);
@@ -86,6 +86,7 @@ function sms2mqtt(sms) {
   };
  
   return request.post(opts, function(error, response, body) {
+console.log(request.post(opts, fucntion(error, response, body);
     return response.statusCode;
   });
 };
