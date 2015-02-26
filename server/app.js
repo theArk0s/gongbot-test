@@ -57,8 +57,8 @@ app.post('/sms2mqtt', function(request, response) {
 //  response.status(status).type("text/xml").send(xml);
 
 // this will probably break everything
-response.status(status);
-response.type("text/xml");
+//response.status(status);
+//response.type("text/xml");
 console.log(response);
 
 // this should be fine
