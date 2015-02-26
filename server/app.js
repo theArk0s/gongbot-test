@@ -16,7 +16,8 @@ var path = require('path'),
   _ = require('underscore'),
   express = require('express'),
   mqtt = require('./mqtt'),
-  WebSocketServer = require('ws').Server;
+  WebSocketServer = require('ws').Server,
+  request = require('request');
   
 var app = express(), 
   port = process.env.PORT || 3000, 
@@ -40,7 +41,7 @@ var status = sms2mqtt(req);
 
 function sms2mqtt(sms) {
   var encodedTopic, opts, request, url;
-  request = require('request');
+//  request = require('request');
   url = 'http://api.thingfabric.com/2';
  
   encodedTopic = encodeURIComponent('gvgxnrkdrpj9co1/RingGong');
