@@ -49,12 +49,13 @@ app.post('/sms2mqtt', function(request, response) {
 
   // return a blank response to Twilio
   xml = '<?xml version="1.0" encoding="UTF-8"?><Response></Response>';
-  var status = sms2mqtt(request);
+
+//  var status = sms2mqtt(request);
+  var status = sms2mqtt(request.body.Body);
 
   console.log(status);
-
-//  var status = sms2mqtt(request.body.Body);
-//  response.status(status).type("text/xml").send(xml);
+  
+  response.status(status).type("text/xml").send(xml);
 
 // this will probably break everything
 //response.status(status);
@@ -62,7 +63,8 @@ app.post('/sms2mqtt', function(request, response) {
 //console.log(response);
 
 // this should be fine
-response.send(xml);
+
+//response.send(xml);
 });
 
 function sms2mqtt(sms) {
