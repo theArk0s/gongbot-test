@@ -54,9 +54,9 @@ app.post('/sms2mqtt', function(req, res) {
 
 // this should be fine?
 res.setHeader("Content-Type", "text/xml");
-res.write(status);
+//res.write(status);
 res.send(status);
-res.end();
+//res.end();
 //res.send(xml);
 
 });
