@@ -39,7 +39,7 @@ app.configure(function(){
  app.use(app.router);
 });
 
-app.listen(port);
+// app.listen(port);
 
 app.post('/sms2mqtt', function(request, response) {
 
