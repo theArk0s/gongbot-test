@@ -36,14 +36,14 @@ app.configure(function(){
   app.use(app.router);
 });
 
-app.post('/sms2mqtt', function(request, response) {
+app.post('/sms2mqtt', function(req, res) {
   var xml;
   // return a blank response to Twilio
   xml = '<?xml version="1.0" encoding="UTF-8"?><Response></Response>';
 
-  var status = sms2mqtt(request.body.Body);
+  var status = sms2mqtt(req.body.Body);
   console.log('-----------------BEGIN REQUEST BODY-------------------');
-  console.log(request.body.Body);
+  console.log(req.body.Body);
   console.log('-----------------END REQUEST BODY-------------------');
   
   console.log('-----------------BEGIN STATUS-------------------');
@@ -53,8 +53,8 @@ app.post('/sms2mqtt', function(request, response) {
 //  response.status(status).type("text/xml").send(xml);
 
 // this should be fine?
-response.send(status);
-response.send(xml);
+res.send(status);
+res.send(xml);
 
 });
 
