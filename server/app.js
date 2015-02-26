@@ -33,16 +33,13 @@ app.post("/sms2mqtt", function(req, res) {
   var xml;
   // return a blank response to Twilio
   xml = '<?xml version="1.0" encoding="UTF-8"?><Response></Response>';
-  var status = sms2mqtt(req.body.body);
+  var status = sms2mqtt(req);
   res.status(status).type("text/xml").send(xml);
 });
 
-
 function sms2mqtt(sms) {
   var encodedTopic, opts, request, url;
- 
   request = require('request');
- 
   url = 'http://api.thingfabric.com/2';
  
   encodedTopic = encodeURIComponent('gvgxnrkdrpj9co1/RingGong');
