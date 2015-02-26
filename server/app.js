@@ -33,7 +33,7 @@ app.configure(function(){
 // GOOD
  app.use(express.logger());
  app.use('/client', express.static(path.resolve(__dirname, '../client/')));
- app.use('/client', express.static(path.resolve(__dirname, '../client/')));
+ app.use('/', express.static(path.resolve(__dirname, '../client/')));
 
  app.use(express.bodyParser());
  app.use(app.router);
