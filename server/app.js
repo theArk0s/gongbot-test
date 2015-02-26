@@ -50,10 +50,10 @@ app.post('/sms2mqtt', function(req, res) {
   console.log(status);
   console.log('-----------------END STATUS-------------------');
   
-res.status(status).type("text/xml").send(xml);
+//res.status(status).type("text/xml").send(xml);
 
 // this should be fine?
-//res.send(status);
+res.send(status);
 //res.send(xml);
 
 });
