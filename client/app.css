@@ -1,0 +1,8 @@
+.heroku-demo .heroku-demo-table {
+  height: 600px;
+  overflow: auto;
+}
+
+.heroku-demo .heroku-demo-map {
+  height: 300px;
+}

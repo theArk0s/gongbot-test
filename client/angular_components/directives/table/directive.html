@@ -1,0 +1,17 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Received</th>
+      <th>Stuff Topic</th>
+      <th>Thing Topic</th>
+      <th>Message</th>
+  </thead>
+  <tbody>
+<!--    <tr ng-repeat="message in messages" ng-class="{ warning: message.stuff==='$SYS' || message.stuff.indexOf('rule')>-1 }"> -->
+ <tr ng-repeat="message in messages">
+      <th>{{ message.date | date: 'medium' }}</th>
+      <th>{{ message.stuff }}</th>
+      <th>{{ message.thing }}</th>
+      <th>{{ message.message.message }}</th>
+  </tbody>
+</table>
