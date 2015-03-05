@@ -82,7 +82,7 @@ else if(message_number == 1)
    {
    body_content = req.body.Body;
    req.body.From = original_sender;
-   message_number = 0;
+//   message_number = 0;
 
 console.log("<=============Message1===============>");
 console.log("To: " + original_sender);
@@ -97,8 +97,12 @@ console.log("Body: " + body_content);
       }, function(error, message) {
       if (error) {
           console.error('DAMMIT!!!: ' + error.message);
+      message_number = 0;
+
       } else {
           console.log('Message sent! Message id: '+message.sid); 
+      message_number = 0;
+
       } 
       });
 
