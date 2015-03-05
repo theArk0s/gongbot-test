@@ -97,11 +97,12 @@ console.log("Body: " + body_content);
       }, function(error, message) {
       if (error) {
           console.error('DAMMIT!!!: ' + error.message);
-      message_number = 0;
+      message_number = 1;
 
       } else {
-          console.log('Message sent! Message id: '+message.sid); 
-      message_number = 0;
+      console.log("Sending message " + message_number);
+      console.log('Message sent! Message id: '+message.sid); 
+      message_number = 1;
 
       } 
       });
