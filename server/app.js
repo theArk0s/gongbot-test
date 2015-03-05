@@ -63,6 +63,12 @@ if(message_number == 0)
    twilio_recipient = req.body.To;
    original_sender = req.body.From;
    body_content = req.body.Body;
+
+console.log("<=============Message0===============>");
+console.log("To: " + original_sender);
+console.log("From: " + twilio_recipient);
+console.log("Body: " + body_content);
+
    xml = '<?xml version="1.0" encoding="UTF-8"?><Response><Message>' + req.body.Body + '</Message></Response>';
 
    res.setHeader("Content-Type", "text/xml");
@@ -78,6 +84,7 @@ else if(message_number == 1)
    req.body.From = original_sender;
    message_number = 0;
 
+console.log("<=============Message1===============>");
 console.log("To: " + original_sender);
 console.log("From: " + twilio_recipient);
 console.log("Body: " + body_content);
