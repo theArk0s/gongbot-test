@@ -84,8 +84,8 @@ console.log("Body: " + body_content);
 
    client.sendMessage({
       to: "" + original_sender,
-      from: "+15005550006",
-//      from: "" + twilio_recipient,
+//      from: "+15005550006",
+      from: "" + twilio_recipient,
       body: "" + body_content
       }, function(error, message) {
       if (error) {
