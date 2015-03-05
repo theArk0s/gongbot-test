@@ -42,6 +42,7 @@ var message_number = 0;
 var original_sender;
 var twilio_recipient;
 var body_content;
+var body_match = "DING";
 
 // MQTT SECTION
 
@@ -75,8 +76,16 @@ console.log("Body: " + body_content);
    console.log("Sending message " + message_number);
    res.send(xml);
 
+   if (body_content === body_match) {
+   console.log("Body === DING, continuing");
    message_number = 1;
-   
+   }
+   else
+   {
+   console.log("Body <> DING, killing loop");
+   message_number = 0;
+   }
+
 } 
 else if(message_number == 1) 
    {
