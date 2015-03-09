@@ -42,7 +42,7 @@ var message_number = 0;
 var original_sender;
 var twilio_recipient;
 var body_content;
-var body_match = "DING";
+var body_match = "DING" || "ding";
 
 // MQTT SECTION
 
