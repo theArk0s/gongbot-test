@@ -37,7 +37,7 @@ module.exports = function(connOpts, messageProxy) {
     protocolVersion: 3,
     username: connOpts.THINGFABRIC_USERNAME,
     password: md5(connOpts.THINGFABRIC_PASSWORD),
-    keepalive: 30,
+    keepalive: 10,
     clientId: 'heroku-apps/1424899449306'
   };
   console.log('Connecting Mqtt client to %s:%s:', connOpts.THINGFABRIC_M2M_ENDPOINT.split(':')[0], 1883);
@@ -46,7 +46,7 @@ module.exports = function(connOpts, messageProxy) {
   client.on('connect', function() {
     console.log('Mqtt ' + opts.clientId + ' connected and subscribing to %s', connOpts.THINGFABRIC_M2M_DATA_CHANNEL);
     client.subscribe(connOpts.THINGFABRIC_M2M_DATA_CHANNEL, {
-      qos: 1
+      qos: 0
     });
     return defer.resolve();
   });
