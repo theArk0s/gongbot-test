@@ -44,6 +44,13 @@ var twilio_recipient;
 var body_content;
 var body_match = "DING";
 var body_match2 = "ding";
+var body_match3 = "Ding";
+var body_match4 = "WIN";
+var body_match5 = "win";
+var body_match6 = "Win";
+var body_match7 = "WON";
+var body_match8 = "Won";
+var body_match9 = "won";
 
 // MQTT SECTION
 
@@ -77,8 +84,8 @@ console.log("Body: " + body_content);
    console.log("Sending message " + message_number);
    res.send(xml);
 
-   if (body_content === body_match || body_content === body_match2) {
-   console.log("Body === DING, continuing");
+   if (body_content === body_match || body_content === body_match2 || body_content === body_match3 || body_content === body_match4 || body_content === body_match5 || body_content === body_match6 || body_content === body_match7 || body_content === body_match8 || body_content === body_match9) {
+   console.log("Body Matched Allowable Rules, continuing");
    message_number = 1;
    }
    else
